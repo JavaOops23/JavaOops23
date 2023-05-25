@@ -1,0 +1,446 @@
+LAB 1
+
+public class Participant{
+  String name;
+  String registrationId;
+  long contactNumber;
+  String branch;
+  static int count;
+  Participant(String name,long contactNumber,String branch){
+      this.name=name;
+      this.contactNumber=contactNumber;
+      this.branch=branch;
+      Participant.count++;
+       registrationId="D"+String.valueOf(count);
+  }
+  static{
+      count=1000;
+  }
+  
+  
+  public String getName() {
+    return name;
+}
+ public void setName(String name) {
+    this.name = name;
+   }
+   public long getContactNumber() {
+    return contactNumber;
+}
+public void setContactNumber(long contactNumber) {
+    this.contactNumber = contactNumber;
+}
+public String getBranch() {
+  return branch;
+}
+public void setBranch(String branch) {
+    this.branch = branch;
+    }
+    public static int getCount() {
+    return count;
+}
+public static void setCount(int count) {
+    Participant.count = count;
+}
+public String getRegistrationId() {
+    return registrationId;
+}
+
+public static void main(String[] args){
+    Participant p1=new Participant("Rohit",1234567899,"Computer");
+    Participant p2=new Participant("Sayli",1988612300,"Mechanical");
+    System.out.println("Hi "+ p1.name+"! Your registration id is "+  p1.registrationId + "\n");
+     System.out.println("Hi "+ p2.name+"! Your registration id is "+  p2.registrationId);
+
+}
+
+
+}
+  
+
+LAB 2
+
+
+import java.util.Scanner;
+
+public class Lab2 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int length;    
+        int l=0;    
+        int element;
+        System.out.println("Enter number of elements in array: ");
+        length=sc.nextInt();
+        int arr[]=new int[length];
+        for(int i=0;i<length;i++){
+            l=0;
+            System.out.printf("Enter element %d: ",i+1);
+            element = sc.nextInt();
+            for(int j:arr)
+            {
+                if(j==element){
+                    l++;
+                }
+            }
+            if(l==0){
+                arr[i]=element;
+            }
+            else{
+                System.out.println("Element already exists, enter a unique element: ");
+                i--;
+            }
+
+        }
+        System.out.println("Entered array is:  ");
+        for (int p=0;p<length;p++){
+            System.out.print(arr[p]+", ");
+        }
+        System.out.println("\nEntered the desired sum: ");
+        int numsum=sc.nextInt();
+        
+        for(int i=0;i<length;i++){
+              int x=arr[i];
+        
+        for(int j=0;j<length;j++){
+              int y=arr[j];
+        
+        
+        if((x+y==numsum) && (x!=y)){
+           System.out.println("Pair exists: ["+x+", "+y+"]");
+        }
+    }
+}
+    }
+}
+
+
+
+
+LAB 3
+
+
+import java.util.Scanner;
+
+class Shape
+{
+double area;
+void setarea(double r){
+area=3.14*r*r;
+System.out.println("The area of circle is:"+area);
+}
+void setarea(int side){
+area=side*side;
+System.out.println("The area of square is:"+area);
+}
+void setarea(int b,int h){
+area=0.5*b*h;
+System.out.println("The area of triangle is:"+area);
+}
+}
+
+class Circle extends Shape
+{
+    void getInput(){
+        double r;
+        System.out.println("Enter the radius of the circle : ");
+        Scanner sc = new Scanner(System.in);
+        r=sc.nextInt();
+        setarea(r);
+    }
+}
+
+class Triangle extends Shape
+{
+void getInput(){
+int b;
+int h;
+System.out.println("Enter the base and height of Triangle : ");
+Scanner sc=new Scanner (System.in);
+b=sc.nextInt();
+h=sc.nextInt();
+setarea(b,h);
+}
+}
+
+class Square extends Shape
+{
+void getInput(){
+int side;
+System.out.println("Enter the side of square: ");
+Scanner sc=new Scanner (System.in);
+side=sc.nextInt();
+setarea(side);
+}
+}
+
+
+
+class Tester{
+    public static void main(String[] args) {
+    Circle c=new Circle();
+    c.getInput();
+    Square s=new Square() ;
+    s.getInput();
+    Triangle t=new Triangle();
+    t.getInput();
+    }
+    }
+
+
+LAB 4
+
+import java.util.Scanner;
+
+public class Lab4{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+
+        try{
+            System.out.println("Input the numerator: ");
+            int a=sc.nextInt();
+            System.out.println("Input the numerator: ");
+            int b=sc.nextInt();
+            int c=a/b;
+            System.out.println(c);
+        }
+        catch(ArithmeticException e){
+            System.out.println(e);
+            System.out.println("You should not divide a number by zero.");
+        
+        }
+        try{
+            System.out.println("Enter Array Size: ");
+            int size=sc.nextInt();
+            int[] arr= new int[size];
+            System.out.println("Enter the index: ");
+            int ind=sc.nextInt();
+            arr[ind]=5;
+
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            System.out.println(e);
+            System.out.println("OOPs!!!Array Index out of bounds for the given size");
+        }
+        try{
+            
+            String sr=null;
+            int len=sr.length();
+        }
+        catch(NullPointerException e){
+            System.out.println(e);
+            System.out.println("Null Pointer Exception arises!!");
+        }
+        
+     }
+}
+
+
+
+LAB 5
+
+import java.util.ArrayList;
+
+class Order {
+    private int orderId;
+    private ArrayList<String> itemNames;
+    private boolean isDelivered;
+
+    public Order(int orderId, ArrayList<String> itemNames, boolean isDelivered) {
+        this.orderId = orderId;
+        this.itemNames = itemNames;
+        this.isDelivered = isDelivered;
+    }
+
+    public ArrayList<String> getItemNames() {
+        return itemNames;
+    }
+
+    public boolean isDelivered() {
+        return isDelivered;
+    }
+}
+
+class Tester {
+    public static void main(String[] args) {
+        ArrayList<Order> orders = new ArrayList<Order>();
+        orders.add(new Order(101, new ArrayList<String>() {{
+            add("Jeans");
+            add("Shirt");
+            add("Belt");
+        }}, true));
+        orders.add(new Order(102, new ArrayList<String>() {{
+            add("Tie");
+            add("Shirt");
+        }}, true));
+        orders.add(new Order(103, new ArrayList<String>() {{
+            add("Tshirt");
+            add("Socks");
+            add("Tie");
+        }}, true));
+
+        ArrayList<String> items = getItems(orders);
+        for (String item : items) {
+            System.out.print(item + ",");
+        }
+    }
+
+    public static ArrayList<String> getItems(ArrayList<Order> orders) {
+        ArrayList<String> items = new ArrayList<String>();
+        for (Order order : orders) {
+            if (order.isDelivered()) {
+                items.addAll(order.getItemNames());
+            }  //if ordered delivered then return items
+        }
+        return items;
+    }
+}
+
+
+
+LAB 6
+
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
+class Lab6 {
+    public static void main(String[] args) {
+        JFrame f=new JFrame("Vishwakarma Institue of Technology");
+        JLabel l1=new JLabel("Name");
+        l1.setBounds(100,100,80,30);
+        JLabel l2=new JLabel("Roll number");
+        l2.setBounds(100,150,80,30);
+        JLabel l3=new JLabel("Branch");
+        l3.setBounds(100,200,80,30);
+        JLabel l4=new JLabel("PRN number");
+        l4.setBounds(90,250,200,30);
+        JLabel l5=new JLabel("Year");
+        l5.setBounds(100,300,80,30);
+        JTextField t1=new JTextField();
+        t1.setBounds(200,100,100,30);
+        JTextField t2=new JTextField();
+        t2.setBounds(200,150,100,30);
+        JTextField t3=new JTextField();
+        t3.setBounds(200,250,100,30);
+        JTextField t4=new JTextField();
+        t4.setBounds(200,300,100,30);
+        String branch[]={"Computer","IT","Mechanical","Chemical","Production","ENTC","AIDS"};
+        JComboBox c1=new JComboBox<>(branch);
+        c1.setBounds(200,200,100,30);
+        JButton b = new JButton("Submit");
+        b.setBounds(200,400,100,30);
+        JPanel p=new JPanel();
+        p.setBounds(200,300,100,30);
+
+        f.add(t4);
+        f.add(l1);
+        f.add(l2);
+        f.add(l3);
+        f.add(l4);
+        f.add(l5);
+        f.add(t1);
+        f.add(t2);
+        f.add(t3);
+        f.add(p);
+
+        f.add(c1);
+        f.add(b);
+        f.setLayout(null);
+        f.setSize(500,500);
+        f.setVisible(true);
+        b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e1) {
+                try
+                {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection c= DriverManager.getConnection("jdbc:mysql://localhost:3306/database or tablename","root","Your MySQL password");
+                    Statement st = c.createStatement();
+
+
+                    String name=t1.getText();
+                    String rollno=t2.getText();
+                    String branch=(String) c1.getSelectedItem();
+                    String prn=t3.getText();
+                    String year=t4.getText();
+                    String querry=String.format("INSERT INTO registration_form VALUES('%s','%s','%s','%s','%s')",name,rollno,branch,prn,year);
+                    st.executeUpdate(querry);
+                    System.out.println("Querry Executed");
+                } catch (ClassNotFoundException | SQLException e) {
+                    throw new RuntimeException(e);
+                }
+               
+            }
+        });
+
+
+    }
+}
+
+Maatrix Addition
+
+import java.util.Scanner;
+
+public class MatrixAddition {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of rows: ");
+        int rows = scanner.nextInt();
+
+        System.out.print("Enter the number of columns: ");
+        int columns = scanner.nextInt();
+
+        int[][] matrix1 = new int[rows][columns];
+        int[][] matrix2 = new int[rows][columns];
+        int[][] sumMatrix = new int[rows][columns];
+
+        System.out.println("Enter elements of the first matrix:");
+        enterMatrixElements(scanner, matrix1);
+
+        System.out.println("Enter elements of the second matrix:");
+        enterMatrixElements(scanner, matrix2);
+
+        addMatrices(matrix1, matrix2, sumMatrix);
+
+        System.out.println("Sum of the matrices:");
+        displayMatrix(sumMatrix);
+    }
+
+    public static void enterMatrixElements(Scanner scanner, int[][] matrix) {
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                System.out.print("Enter element at position (" + (i + 1) + "," + (j + 1) + "): ");
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+    }
+
+    public static void addMatrices(int[][] matrix1, int[][] matrix2, int[][] sumMatrix) {
+        int rows = matrix1.length;
+        int columns = matrix1[0].length;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                sumMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
+            }
+        }
+    }
+
+    public static void displayMatrix(int[][] matrix) {
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
